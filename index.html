@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Vanilla JS</title>
+        <style>
+            h1{
+                text-align: center;
+            }
+            .content {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+            .task-box {
+                width: 100px;
+                height: 100px;
+                border: grey 1px solid;
+                border-radius: 2px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+            .music-task {
+                background: no-repeat center
+                    url("https://www.djservice.se/bilder/produkter/2/IDS0026652.jpg");
+                background-size: contain;
+                color: hotpink;
+            }
+            .task-box-text {
+                opacity: 0.2;
+                transition: all 0.5s ease-in-out;
+            }
+            .music-task .task-box-text:hover {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            a {
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>30 days Vanilla JS Challenge</h1>
+        <div class="content">
+            <a href="./DrumKit/index.html">
+                <div class="task-box music-task">
+                    <span class="task-box-text">Let the music play</span>
+                </div>
+            </a>
+            <a href="./JustClock/index.html">
+                <div class="task-box">
+                    <span class="task-box-text">
+                        Time is unstoppable
+                    </span>
+                </div>
+            </a>
+        </div>
+    </body>
+</html>
