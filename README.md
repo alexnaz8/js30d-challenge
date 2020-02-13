@@ -12,3 +12,5 @@ The mini projects of vanilla JS
 8. HTML 5 Canvas
 9. Multyselection with Shift btn
 10. Styled HTML5 video player
+11. Key sequence fun
+12. Slide on scroll effect
