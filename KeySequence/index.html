@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Key Detection</title>
+        <script
+            type="text/javascript"
+            src="https://www.cornify.com/js/cornify.js"
+        ></script>
+    </head>
+    <body>
+        <h1 style="text-align: center;">Say hello and get unicorn</h1>
+        <script>
+            const pressed = [];
+            const secredWord = "hello";
+            window.addEventListener("keyup", e => {
+                pressed.push(e.key);
+                pressed.splice(
+                    -secredWord.length - 1,
+                    pressed.length - secredWord.length
+                );
+                if (pressed.join("").includes(secredWord)) {
+                    cornify_add();
+                    console.log(
+                        "%cUnicorns activated",
+                        "color:yellow;font-size:15px"
+                    );
+                }
+            });
+        </script>
+    </body>
+</html>
