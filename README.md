@@ -10,3 +10,5 @@ The mini projects of vanilla JS
 6. Ajax type
 7. Another array things
 8. HTML 5 Canvas
+9. Multyselection with Shift btn
+10. Styled HTML5 video player
