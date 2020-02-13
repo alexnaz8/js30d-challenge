@@ -14,3 +14,4 @@ The mini projects of vanilla JS
 10. Styled HTML5 video player
 11. Key sequence fun
 12. Slide on scroll effect
+13. Local Storage Usage
