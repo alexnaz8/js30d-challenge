@@ -16,3 +16,4 @@ The mini projects of vanilla JS
 12. Slide on scroll effect
 13. Local Storage Usage
 14. Mouse move shadow (nested children offset correction)
+15. Array of strings sorted without articles
