@@ -17,3 +17,4 @@ The mini projects of vanilla JS
 13. Local Storage Usage
 14. Mouse move shadow (nested children offset correction)
 15. Array of strings sorted without articles
+16. Total video time (.reduce practice)
