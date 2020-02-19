@@ -19,3 +19,4 @@ The mini projects of vanilla JS
 15. Array of strings sorted without articles
 16. Total video time (.reduce practice)
 17. WebCam Fun
+18. Fun with speech

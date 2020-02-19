@@ -28,7 +28,7 @@ function paintToCanvas() {
         ctx.drawImage(video, 0, 0, width, height);
         //take the pixels for filtering ;-)
         const filters = document.querySelectorAll(".filters input:checked");
-        if(ctx.globalAlpha<1) ctx.globalAlpha = 1;
+        if (ctx.globalAlpha < 1) ctx.globalAlpha = 1;
         if (!filters.length) return;
         let pixels = ctx.getImageData(0, 0, width, height);
         filters.forEach(filter => (pixels = filtersMap[filter.name](pixels)));
