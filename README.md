@@ -20,3 +20,4 @@ The mini projects of vanilla JS
 16. Total video time (.reduce practice)
 17. WebCam Fun
 18. Fun with speech
+19. Geolocation (it's better with mobile device)
