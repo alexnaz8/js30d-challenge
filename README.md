@@ -23,3 +23,4 @@ The mini projects of vanilla JS
 19. Geolocation (it's better with mobile device)
 20. Nice link highlight on hover effect
 21. Speech Synthesis
+22. Sticky Nav
