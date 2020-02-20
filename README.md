@@ -24,3 +24,4 @@ The mini projects of vanilla JS
 20. Nice link highlight on hover effect
 21. Speech Synthesis
 22. Sticky Nav
+23. Event capture, propagation, bobbling and once
