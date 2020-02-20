@@ -21,3 +21,4 @@ The mini projects of vanilla JS
 17. WebCam Fun
 18. Fun with speech
 19. Geolocation (it's better with mobile device)
+20. Nice link highlight on hover effect
