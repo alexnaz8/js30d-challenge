@@ -25,3 +25,4 @@ The mini projects of vanilla JS
 21. Speech Synthesis
 22. Sticky Nav
 23. Event capture, propagation, bobbling and once
+24. Stripe Nav (dropdown link following)
