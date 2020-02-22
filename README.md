@@ -28,3 +28,4 @@ The mini projects of vanilla JS
 24. Stripe Nav (dropdown link following)
 25. Mouse down and drag
 26. Countdown Timer
+27. Whack A Mole Game
