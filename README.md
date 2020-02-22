@@ -26,3 +26,4 @@ The mini projects of vanilla JS
 22. Sticky Nav
 23. Event capture, propagation, bobbling and once
 24. Stripe Nav (dropdown link following)
+25. Mouse down and drag
