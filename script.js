@@ -66,7 +66,6 @@ const data = [
 ];
 const miniature = document.querySelector(".boxMini");
 const tasksList = document.querySelector(".tasks-list");
-let lastActive;
 
 function placeList(conteiner, listData) {
     conteiner.innerHTML = listData
@@ -87,94 +86,28 @@ function showFrame() {
     miniature.innerHTML = `<iframe src="${this.href}" scrolling="no">
                         <p>Your browser does not support iframes.</p>
                     </iframe>`;
-}
-
-/*function hideFrame() {
-    miniature.classList.add("hidden");
-}*/
-
-function rebuildList(list, direction = "up") {
-    let transfer;
-    if (direction === "up") {
-        transfer = list.pop();
-        list.unshift(transfer);
-    } else {
-        transfer = list.shift();
-        list.push(transfer);
-    }
-    return list;
-}
-
-function scrollCheck() {
-    const activeIdx = [...tasks].findIndex(task => {
-        const taskCoords = task.parentElement.getBoundingClientRect();
-        return (
-            taskCoords.top - topOffset > topEdge &&
-            taskCoords.bottom - topOffset < bottomEdge
-        );
-    });
-   /* if (activeIdx === -1) {
-        const taskCoords = lastActive.getBoundingClientRect();
-        console.log(lastActive.innerText);
-        tasksList.scrollTo({
-            top: taskCoords.top - topOffset,
-            behavior: "smooth"
-        });
-    } else {
-        lastActive = tasks[activeIdx];
-        console.log(activeIdx);
-    }*/
-   /* if (activeIdx !== -1) {
-        const prevIdx = [...tasks].findIndex(task => task === lastActive);
-        console.log(prevIdx, activeIdx);
-        lastActive = tasks[activeIdx];
-        const newList = rebuildList(
-            [...tasksList.querySelectorAll(".list-item")],
-            activeIdx - prevIdx < 0 ? "up" : "down"
-        );
-        console.log(newList);
-        tasksList.innerHTML = newList.join("");
-    }*/
-    if (activeIdx !== -1)
-    showFrame.call(tasks[activeIdx]);
-}
-
-function debounce(func, wait = 20, immediate = true) {
-    let timeout;
-    return function() {
-        let context = this,
-            args = arguments;
-        let later = function() {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
+    if (document.body.offsetWidth < 830) {
+        const iframe = miniature.children[0];
+        const sizes = {
+            width: window.getComputedStyle(iframe).width.replace(/[a-z]/g, ""),
+            height: window.getComputedStyle(iframe).height.replace(/[a-z]/g, "")
         };
-        let callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
-    };
+        const propor = {
+            w: tasksList.offsetWidth / sizes.width,
+            h: tasksList.offsetHeight / sizes.height
+        };
+        iframe.setAttribute(
+            "style",
+            `transform:scale(${propor.w},${propor.h})`
+        );
+    }
+}
+
+function hideFrame() {
+    miniature.classList.add("hidden");
 }
 
 placeList(tasksList, data);
-
-const activeBox = document.querySelector(".active-task-selector");
 const tasks = document.querySelectorAll("a");
-activeBox.setAttribute(
-    "style",
-    `width:${tasksList.scrollWidth}px; height:${tasks[0].parentElement
-        .clientHeight * 1.5}px;
-    top : ${tasksList.offsetHeight / 2 - activeBox.offsetHeight / 2}px`
-);
-
-tasksList.style.paddingRight =   tasksList.parentElement.scrollWidth - tasksList.clientWidth + "px";
-lastActive = tasks[0];
-const activeCoords = activeBox.getBoundingClientRect();
-const topOffset = document.querySelector(".content").offsetTop;
-const topEdge = (activeCoords.top - topOffset) | 0;
-const bottomEdge = (activeCoords.bottom - topOffset) | 0;
-
-tasksList.addEventListener("scroll", debounce(scrollCheck));
-
 tasks.forEach(task => task.addEventListener("mouseenter", showFrame));
-tasks.forEach(task => task.addEventListener("mouseleave", scrollCheck));
-scrollCheck();
+tasks.forEach(task => task.addEventListener("mouseleave", hideFrame));
