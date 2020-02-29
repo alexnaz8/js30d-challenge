@@ -4,209 +4,132 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link
+            href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou&display=swap"
+            rel="preload" as="font"
+            crossorigin="anonymous"
+        />
         <title>Vanilla JS</title>
         <style>
+            body {
+                font-family: "ZCOOL QingKe HuangYou";
+            }
             h1 {
                 text-align: center;
             }
             .content {
+                position: relative;
                 display: flex;
                 justify-content: space-around;
-                flex-wrap: wrap;
-            }
-            .task-box {
-                width: 100px;
-                height: 100px;
-                border: grey 1px solid;
-                border-radius: 2px;
-                display: flex;
-                justify-content: center;
                 align-items: center;
-                text-align: center;
             }
-            .music-task {
-                background: no-repeat center
-                    url("https://www.djservice.se/bilder/produkter/2/IDS0026652.jpg");
-                background-size: contain;
-                color: hotpink;
+            .container {
+                overflow: hidden;
+                height: 80vh;
+            }
+            .active-task-selector {
+                height: 50px;
+                border: 1px solid grey;
+                position: absolute;
+                z-index: -1;
+            }
+            .tasks-list {
+                padding: 0px;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+            }
+            .tasks-list::-webkit-scrollbar {
+                width: 0.5em;
+            }
+
+            .tasks-list::-webkit-scrollbar-track {
+                -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+                box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            }
+
+            .tasks-list::-webkit-scrollbar-thumb {
+                background-color: darkgrey;
+                outline: 1px solid slategrey;
+            }
+            .list-item {
+                margin: 15px;
+                list-style-type: none;
             }
             .task-box-text {
-                opacity: 0.2;
+                color: grey;
                 transition: all 0.5s ease-in-out;
-            }
-            .music-task .task-box-text:hover {
-                opacity: 1;
-                transform: scale(1.1);
             }
             a {
                 text-decoration: none;
             }
+            .screen,
+            .boxMini {
+                width: 500px;
+                height: 350px;
+            }
+            .screen {
+                border: 1px solid grey;
+            }
+            .boxMini {
+                background-color: white;
+                opacity: 1;
+                transition: all 0.8s ease-in-out;
+            }
+            .boxMini iframe {
+                position: absolute;
+                transform: scale(0.5);
+                width: 1000px;
+                height: 700px;
+                transform-origin: 0 0;
+                border: none;
+            }
+            .hidden {
+                opacity: 0;
+            }
+            @media screen and (max-width: 830px) {
+                .content {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    align-items: center;
+                }
+                .tasks-list {
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                }
+                .task-box-text {
+                    padding: 1px 5px;
+                    color: lavender;
+                    background-color: grey;
+                    border-radius: 5px;
+                }
+                .screen {
+                    width: 100%;
+                    height: 100%;
+                }
+                .boxMini,
+                .screen {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: -999;
+                }
+            }
         </style>
     </head>
     <body>
-        <h1>30 days Vanilla JS Challenge</h1>
+        <h1>Vanilla JS Challenge</h1>
         <div class="content">
-            <a href="./DrumKit/index.html">
-                <div class="task-box music-task">
-                    <span class="task-box-text">Let the music play</span>
-                </div>
-            </a>
-            <a href="./JustClock/index.html">
-                <div class="task-box">
-                    <span class="task-box-text">
-                        Time is unstoppable
-                    </span>
-                </div>
-            </a>
-            <a href="./CSSVars/index.html">
-                <div class="task-box">
-                    <span class="task-box-text">
-                        Let's play with styles
-                    </span>
-                </div>
-            </a>
-            <a href="./FlexGallery/index.html">
-                <div class="task-box">
-                    <span class="task-box-text">
-                        Nice Flex Gallery
-                    </span>
-                </div>
-            </a>
-            <a href="./Type/index.html">
-                <div class="task-box">
-                    <span class="task-box-text">
-                        Find the City
-                    </span>
-                </div>
-            </a>
-            <a href="./CanvasFun/index.html">
-                <div class="task-box">
-                    <span class="task-box-text">
-                        Canvas Fun
-                    </span>
-                </div>
-            </a>
-            <a href="./CheckwShift/index.html">
-                <div class="task-box">
-                    <span class="task-box-text">
-                        Hold Shift to range select
-                    </span>
-                </div>
-            </a>
-            <a href="./CustomVideoPlayer/index.html">
-                <div class="task-box">
-                    <span class="task-box-text">
-                        Custom HTML Video Player
-                    </span>
-                </div>
-            </a>
-            <a href="./KeySequence/index.html">
-                <div class="task-box">
-                    <span class="task-box-text">
-                        Key Sequence
-                    </span>
-                </div>
-            </a>
-            <a href="./SlideOnScroll/index.html">
-                <div class="task-box">
-                    <span class="task-box-text">
-                        Slide On Scroll
-                    </span>
-                </div>
-            </a>
-            <a href="./LocalStorage/index.html">
-                <div class="task-box">
-                    <span class="task-box-text">
-                        Local Storage usage
-                    </span>
-                </div>
-            </a>
-            <a href="./MouseMoveShadow/index.html">
-                <div class="task-box">
-                    <span class="task-box-text">
-                        Mouse Move Shadow
-                    </span>
-                </div>
-            </a>
-            <a href="./SortWithoutArticles/index.html">
-                <div class="task-box">
-                    <span class="task-box-text">
-                        Sort Without Articles
-                    </span>
-                </div>
-            </a>
-            <a href="./TallyStringTimesWReduce/index.html">
-                <div class="task-box">
-                    <span class="task-box-text">
-                        Total Video Time (just reduce practice)
-                    </span>
-                </div>
-            </a>
-            <a href="./Webcam/index.html">
-                <div class="task-box">
-                    <span class="task-box-text"> WebCam Fun </span>
-                </div>
-            </a>
-            <a href="./SpeechDetection/index.html">
-                <div class="task-box">
-                    <span class="task-box-text"> Speech Detection Fun </span>
-                </div>
-            </a>
-            <a href="./Geolocation/index.html">
-                <div class="task-box">
-                    <span class="task-box-text"> Geolocation </span>
-                </div>
-            </a>
-            <a href="./LinkFollowHighlighter/index.html">
-                <div class="task-box">
-                    <span class="task-box-text">
-                        A nice link highlighting
-                    </span>
-                </div>
-            </a>
-            <a href="./SpeechSynthesis/index.html">
-                <div class="task-box">
-                    <span class="task-box-text"> Speech Synthesis </span>
-                </div>
-            </a>
-            <a href="./StickyNav/index.html">
-                <div class="task-box">
-                    <span class="task-box-text"> Sticky Nav </span>
-                </div>
-            </a>
-            <a href="./StripeNav/index.html">
-                <div class="task-box">
-                    <span class="task-box-text"> Stripe Nav </span>
-                </div>
-            </a>
-            <a href="./ClickAndDrag/index.html">
-                <div class="task-box">
-                    <span class="task-box-text">
-                        Press mouse button and drag
-                    </span>
-                </div>
-            </a>
-            <a href="./VideoSpeedController/index.html">
-                <div class="task-box">
-                    <span class="task-box-text">
-                        Video Speed Controller
-                    </span>
-                </div>
-            </a>
-            <a href="./CountdownTimer/index.html">
-                <div class="task-box">
-                    <span class="task-box-text">
-                        Countdown Timer
-                    </span>
-                </div>
-            </a>
-            <a href="./WhackAMole/index.html">
-                <div class="task-box">
-                    <span class="task-box-text">
-                        Whack A Mole Game
-                    </span>
-                </div>
-            </a>
+            <div class="container">
+                <div class="active-task-selector"></div>
+                <div class="tasks-list"></div>
+            </div>
+            <div class="screen">
+                <div class="boxMini hidden"></div>
+            </div>
         </div>
+        <script defer src="./script.js"></script>
     </body>
 </html>

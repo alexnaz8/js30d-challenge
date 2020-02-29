@@ -44,7 +44,7 @@
                 }
             });
             speechRec.addEventListener("end", speechRec.start);
-            speechRec.start();
+            if (window.location === window.parent.location) speechRec.start();
         </script>
 
         <style>
