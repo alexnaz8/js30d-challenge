@@ -100,5 +100,5 @@ function ghostEffect() {
     return arguments.length > 1 ? arguments : arguments[0];
 }
 
-getVideo();
+if (window.location === window.parent.location) getVideo();
 video.addEventListener("canplay", paintToCanvas);

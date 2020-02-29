@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width" />
     </head>
     <body>
-      <h1>Prefer use mobile phone</h1>
+        <h1>Prefer use mobile phone</h1>
         <svg
             class="arrow"
             xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +105,7 @@
             .units {
                 font-size: 15px;
             }
-            
+
             .coordinates {
                 color: white;
                 width: 100%;
@@ -121,17 +121,21 @@
             const speed = document.querySelector(".speed-value");
             const lat = document.querySelector(".lat");
             const long = document.querySelector(".long");
-            navigator.geolocation.watchPosition(data => {
-                console.log(data);
-                lat.textContent = `lat:${data.coords.latitude}`;
-                long.textContent = `long:${data.coords.longitude}`;
-                speed.textContent = data.coords.speed || 0;
-                arrow.style.transform = `rotate ${data.coords.heading}deg`;
-            }),
-                err => {
-                    alert("Well, geolocation does not work properly");
-                    console.log(err);
-                };
+            if (window.location === window.parent.location) {
+                navigator.geolocation.watchPosition(
+                    data => {
+                        console.log(data);
+                        lat.textContent = `lat:${data.coords.latitude}`;
+                        long.textContent = `long:${data.coords.longitude}`;
+                        speed.textContent = data.coords.speed || 0;
+                        arrow.style.transform = `rotate ${data.coords.heading}deg`;
+                    },
+                    err => {
+                        alert("Well, geolocation does not work properly");
+                        console.log(err);
+                    }
+                );
+            }
         </script>
     </body>
 </html>
